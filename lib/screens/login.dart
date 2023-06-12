@@ -1,5 +1,6 @@
 import "package:flutter/material.dart";
 import "package:flutter_application_1/utilis/routes.dart";
+import "package:velocity_x/velocity_x.dart";
 
 class Login extends StatefulWidget {
   const Login({super.key});
@@ -30,7 +31,7 @@ class _LoginState extends State<Login> {
   @override
   Widget build(BuildContext context) {
     return Material(
-        color: Colors.white,
+        color: context.canvasColor,
         child: SafeArea(
           child: SingleChildScrollView(
             child: Column(
@@ -51,7 +52,10 @@ class _LoginState extends State<Login> {
                     child: Column(
                       children: [
                         TextFormField(
-                          decoration: const InputDecoration(
+                          decoration: InputDecoration(
+                              enabledBorder: UnderlineInputBorder(
+                                  borderSide: BorderSide(
+                                      color: context.colors.outline)),
                               labelText: "Username",
                               hintText: "Enter Username"),
                           validator: (value) {
@@ -75,13 +79,16 @@ class _LoginState extends State<Login> {
                             }
                             return null;
                           },
-                          decoration: const InputDecoration(
+                          decoration: InputDecoration(
+                              enabledBorder: UnderlineInputBorder(
+                                  borderSide: BorderSide(
+                                      color: context.colors.outline)),
                               labelText: "Password",
                               hintText: "Enter Password"),
                         ),
                         const SizedBox(height: 40),
                         Material(
-                          color: Colors.orange,
+                          color: context.primaryColor,
                           borderRadius:
                               BorderRadius.circular(changeButton ? 50 : 8),
                           child: InkWell(
@@ -98,6 +105,7 @@ class _LoginState extends State<Login> {
                                   : const Text(
                                       'Login',
                                       style: TextStyle(
+                                          color: Colors.white,
                                           fontSize: 18,
                                           fontWeight: FontWeight.bold),
                                     ),
